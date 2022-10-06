@@ -31,10 +31,9 @@ function smallImageClick(event) {
   
   event.preventDefault();
 
-  if (event.target.classList.contains('gallery')) return;
+  if (event.target.classList.contains('gallery__image')) return;
 
   const largeImage = event.target.dataset.source;
-
   const instance = basicLightbox.create(`
     <img src="${largeImage}" width="800" height="600">
 `);
