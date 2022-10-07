@@ -3,30 +3,43 @@ import { galleryItems } from './gallery-items.js';
 console.log(galleryItems);
 
 
-const galleryEl = document.querySelector('.gallery')
-const items = []
+// const galleryEl = document.querySelector('.gallery')
+// const items = []
 
-galleryItems.forEach(element => {
-	const galleryItem = document.createElement('div')
-	const galleryLink = document.createElement('a')
-	const galleryImage = document.createElement('img')
+// galleryItems.forEach(element => {
+// 	const galleryItem = document.createElement('div')
+// 	const galleryLink = document.createElement('a')
+// 	const galleryImage = document.createElement('img')
 
 
-	galleryItem.className = 'gallery__item'
-	galleryLink.className = 'gallery__link'
-	galleryLink.href = element.original
-    galleryImage.className = 'gallery__image'
-    galleryImage.src = element.preview;
-    galleryImage.alt = element.description;
+// 	galleryItem.className = 'gallery__item'
+// 	galleryLink.className = 'gallery__link'
+// 	galleryLink.href = element.original
+//     galleryImage.className = 'gallery__image'
+//     galleryImage.src = element.preview;
+//     galleryImage.alt = element.description;
 
-	galleryItem.append(galleryLink)
-	galleryLink.append(galleryImage)
-	items.push(galleryItem)
-})
+// 	galleryItem.append(galleryLink)
+// 	galleryLink.append(galleryImage)
+// 	items.push(galleryItem)
+// })galleryEl.append(...items)
 
-galleryEl.append(...items)
+const galleryEl = document.querySelector('.gallery');
+const markUp = galleryItems.map((image) => 
+	`<div class="gallery__item">
+		<a class="gallery__link" href=${image.original}>
+		<img class = "gallery__image"
+			src=${image.preview}
+			data-sourse=${image.original}
+			alt=${image.description}
+		/>
+		</a>
+	</div >`).join("");
 
-galleryEl.addEventListener("click", smallImageClick);
+	galleryEl.innerHTML = markUp;
+
+
+markUp.addEventListener("click", smallImageClick);
 function smallImageClick(event) {
   
   event.preventDefault();
@@ -35,30 +48,12 @@ function smallImageClick(event) {
 
   const largeImage = event.target.dataset.source;
   const instance = basicLightbox.create(`
-    <img src="${largeImage}" width="800" height="600">
+    <img src=${largeImage} width="800" height="600">
 `);
 
 instance.show()
 }
 
-/*galleryEl.addEventListener('click', event => {
-    event.preventDefault();
-    if (event.target.classList.contains('gallery')) {
-		return
-	}
 
-    const newImage = event.target.getAttribute('data-source')
-
-	const instance = basicLightbox.create(`
-    <img src="${newImage}" width="800" height="600">
-`);
-
-    instance.show()
     
-    galleryEl.addEventListener('keydown', e => {
-		if (e.key === 'Escape') {
-			instance.close()
-		}
-	})
-})*/
 
