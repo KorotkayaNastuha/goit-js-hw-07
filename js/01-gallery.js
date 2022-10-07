@@ -48,7 +48,7 @@ function smallImageClick(event) {
 
   const largeImage = event.target.dataset.source;
   const instance = basicLightbox.create(`
-    <img src="${largeImage}" width="800" height="600">
+    <img src="${largeImage}">
 `);
 
 instance.show()
