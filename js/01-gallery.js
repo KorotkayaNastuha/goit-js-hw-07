@@ -39,7 +39,7 @@ const markUp = galleryItems.map((image) =>
 	galleryEl.innerHTML = markUp;
 
 
-markUp.addEventListener("click", smallImageClick);
+galleryEl.addEventListener("click", smallImageClick);
 function smallImageClick(event) {
   
   event.preventDefault();
@@ -52,8 +52,12 @@ function smallImageClick(event) {
 `);
 
 instance.show()
-}
 
 
+   galleryEl.addEventListener('keydown', e => {
+		if (e.key === 'Escape') {
+			instance.close()
+		}
+	})
     
-
+}
