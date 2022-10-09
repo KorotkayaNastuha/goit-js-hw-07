@@ -40,19 +40,16 @@ const markUp = galleryItems.map((image) =>
 
 
 galleryEl.addEventListener("click", smallImageClick);
+
 function smallImageClick(event) {
-  
   event.preventDefault();
-
   if (!event.target.classList.contains('gallery__image')) return;
-
   const largeImage = event.target.dataset.source;
   const instance = basicLightbox.create(`
-    <img src="${largeImage}">
+    <img src="${event.target.dataset.source}" widht="800" height="600">
 `);
 
 instance.show()
-
 
    galleryEl.addEventListener('keydown', e => {
 		if (e.key === 'Escape') {
