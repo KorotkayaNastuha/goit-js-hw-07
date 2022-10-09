@@ -30,7 +30,7 @@ const markUp = galleryItems.map((image) =>
 		<a class="gallery__link" href=${image.original}>
 		<img class = "gallery__image"
 			src=${image.preview}
-			data-sourse=${image.original}
+			data-source=${image.original}
 			alt=${image.description}
 		/>
 		</a>
